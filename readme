@@ -1,0 +1,24 @@
+
+The hlife project is an app which made by Dart language for Android platform to introduce health information to help people improve their life, including food, sport, sleep, medic, search modules.
+
+There are a lot of problems while I'm developing the app.
+
+If developers have same troubles in writing Dart code, maybe these docs can help them.
+
+Take a look the index:
+
+write_Dart_code.html: including enviroment, UI design.
+
+study_code_of_Dart.html: including resouce, sample code.
+
+permission_in_Dart.html: including basic permission, package.
+
+home_page_design.html: including demo of GridView widget.
+
+loading_page_in_Dart.html: including demo of FutureBuilder widget.
+
+Async_in_Dart.html: including Dart code of compute() usage.
+
+Date_process_in_Dart.html: including Dart code of DateFormat() usage.
+
+Text_input_in_Dart.html: including demo of TextField widget.

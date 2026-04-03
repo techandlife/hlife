@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Loading page in Dart</title>
+</head>
+
+<body>
+    <p>
+        Using FutureBuilder widget to show a loading spinner.
+    </p>
+    <p>
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [TextButton(onPressed: _copy, child: Text("Copy"))],
+        ),
+      ),
+      body: FutureBuilder<void>(
+        future: _running(),
+        builder: (context, snapshot) {
+          if (_text.trim().isNotEmpty) {
+            return SingleChildScrollView(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(_text),
+                ),
+              ),
+            );
+          }
+
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
+    );
+  }
+    </p>
+    <p>
+        The source code can be found in the folder of demos.
+    </p>
+    <br>
+</body>
+
+</html>

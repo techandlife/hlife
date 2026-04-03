@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Android permission process in Dart</title>
+</head>
+
+<body>
+    <p>
+        1.Permission configuration.
+    </p>
+    <p>
+        Add the following lines in android/app/src/main/AndroidManifest.xml:
+    </p>
+    <p>
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.STORAGE_INTERNAL" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    </p>
+    <p>
+        2.External storage access needs to add package for requesting permission.
+    </p>
+    <p>
+        Run the following commands in Terminal:
+    </p>
+    <p>
+        flutter pub add permission_handler
+    </p>
+    <p>The Dart code:
+    </p>
+    <p>
+    if (!await Permission.manageExternalStorage.isGranted &&
+        !await Permission.storage.isGranted) {
+      if (!await Permission.manageExternalStorage.request().isGranted) {
+        openAppSettings();
+      } else {
+        doSomething();
+      }
+    } else {
+      doSomething();
+    }
+    </p>
+    <br>
+</body>
+
+</html>

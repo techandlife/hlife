@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Text input in Dart</title>
+</head>
+
+<body>
+    <p>
+      1.Using TextField widget.
+    </p>
+    <p>
+ final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: TextField(
+          maxLines: 1000000,
+          minLines: 100,
+          controller: controller,
+          decoration: InputDecoration(border: UnderlineInputBorder()),
+        ),
+      ),
+    );
+  }
+    </p>
+    <p>
+      2.Using TextEditingController to do init.
+    </p>
+    <p>
+  myController = TextEditingController(text: "Init value.");      
+    </p>
+    <p>
+      The source code can be found in the folder of demos.
+    </p>
+    <br>
+</body>
+
+</html>

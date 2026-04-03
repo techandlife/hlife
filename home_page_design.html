@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Home page design</title>
+</head>
+
+<body>
+    <p>
+        Using GridView widget is a better way in home page.
+    </p>
+    <p>
+class HomeMenuContent extends StatelessWidget {
+  const HomeMenuContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.extent(
+      maxCrossAxisExtent: 300,
+      padding: const EdgeInsets.all(4),
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 4,
+      shrinkWrap: true,
+      children: [for (final mItem in _homeMenu) HomeMenuItem(menuItem: mItem)],
+    );
+  }
+}
+    </p>
+    <p>
+        The demo can be found in the folder of demos.
+    </p>
+    <br>
+</body>
+
+</html>
