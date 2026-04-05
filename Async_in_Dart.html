@@ -1,16 +1,23 @@
 <html>
-
 <head>
     <title>Async process in Dart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dart Android hlife project UI design permission GridView FutureBuilder async">
+    <meta name="keywords" content="Dart Android hlife project UI design permission GridView FutureBuilder async">
+    <style>
+        .code {
+            background-color: gainsboro;
+            white-space: pre-line;
+        }        
+    </style>
 </head>
-
 <body>
     <p>
         1.Using compute() to do async operations.
     </p>
     <p>The Dart code:
     </p>
-    <p>
+    <div class="code">
   Future<List<String>?> search(String text) async {
     return await compute(_query, text);
   }
@@ -18,13 +25,14 @@
   List<String>? _query(String text) {
     //doSomething.
   }
-    </p>
+
+    </div>
     <p>
         2.Using Isolate.run to do async operations.
     </p>
     <p>The Dart code:
     </p>
-    <p>
+    <div class="code">
   Future<List<String>?> search2(String text, List<String> src) async {
     return await Isolate.run<List<String>?>(() {
       return _query2(text, src);
@@ -34,7 +42,14 @@
   List<String>? _query2(String text, List<String> src) {
     //doSomething.
   }
+
+    </div>
+    <p>
+        The source code can be found in the folder of demos.
     </p>
+    <p>
+        <a href="demos/async.dart" target="_blank">download async.dart</a>
+    </p>    
     <br>
 </body>
 

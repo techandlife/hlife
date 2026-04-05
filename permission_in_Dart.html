@@ -2,6 +2,15 @@
 
 <head>
     <title>Android permission process in Dart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dart Android hlife project UI design permission GridView FutureBuilder async">
+    <meta name="keywords" content="Dart Android hlife project UI design permission GridView FutureBuilder async">
+    <style>
+        .code {
+            background-color: gainsboro;
+            white-space: pre-line;
+        }        
+    </style>
 </head>
 
 <body>
@@ -11,36 +20,54 @@
     <p>
         Add the following lines in android/app/src/main/AndroidManifest.xml:
     </p>
+    <div class="code">
+        < uses-permission android:name="android.permission.INTERNET" />
+        < uses-permission android:name="android.permission.STORAGE_INTERNAL" />
+        < uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        < uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        < uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    </div>
     <p>
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.STORAGE_INTERNAL" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+        The xml file can be found in the folder of demos.
     </p>
+    <p>
+        <a href="demos/AndroidManifest.xml" target="_blank">download AndroidManifest.xml</a>
+    </p>    
     <p>
         2.External storage access needs to add package for requesting permission.
     </p>
     <p>
         Run the following commands in Terminal:
     </p>
-    <p>
+    <div class="code">
         flutter pub add permission_handler
-    </p>
+
+    </div>
+    <br>
     <p>The Dart code:
     </p>
-    <p>
+    <div class="code">
     if (!await Permission.manageExternalStorage.isGranted &&
         !await Permission.storage.isGranted) {
       if (!await Permission.manageExternalStorage.request().isGranted) {
         openAppSettings();
       } else {
-        doSomething();
+        //doSomething();
       }
     } else {
-      doSomething();
+      // doSomething();
     }
+
+    </div>
+    <br>
+    <br>
+    <p>
+        The source code can be found in the folder of demos.
     </p>
+    <p>
+        <a href="demos/request_permission.dart" target="_blank">download request_permission.dart</a>
+    </p>    
     <br>
 </body>
 
