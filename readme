@@ -17,8 +17,8 @@ home_page_design.html: including demo of GridView widget.
 
 loading_page_in_Dart.html: including demo of FutureBuilder widget.
 
-async_in_Dart.html: including Dart code of compute() usage.
+async.html: including Dart code of compute() usage.
 
-date_process_in_Dart.html: including Dart code of DateFormat() usage.
+date_process.html: including Dart code of DateFormat() usage.
 
-text_input_in_Dart.html: including demo of TextField widget.
+text_input.html: including demo of TextField widget.
