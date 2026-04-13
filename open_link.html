@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Open link in browser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async open link">
+    <meta name="keywords" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async open link">
+    <style>
+        .code {
+            background-color: gainsboro;
+            white-space: pre-line;
+        }        
+    </style>
+</head>
+
+<body>
+    <p>
+        Open a link in browser needs to add url_launcher package.
+    </p>    
+    <p>
+        Run the following command in Terminal:
+    </p>
+    <div class="code">
+        flutter pub add url_launcher
+
+    </div>
+    <br>
+    <p>The Dart code:
+    </p>
+    <div class="code">
+  Future<void> _openLink() async {
+    final url = Uri.parse(_versionUrl);
+    if (await launcher.canLaunchUrl(url)) {
+      await launcher.launchUrl(url);
+    }
+  }
+
+    </div>
+    <br>
+    <br>
+    <p>
+        The source code can be found here:
+    </p>
+    <p>
+        <a href="open_link_main.dart" target="_blank">download open_link_main.dart</a>
+    </p>    
+    <br>
+</body>
+
+</html>

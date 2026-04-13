@@ -22,3 +22,7 @@ async.html: including Dart code of compute() usage.
 date_process.html: including Dart code of DateFormat() usage.
 
 text_input.html: including demo of TextField widget.
+
+make_clean.html:including clean and build commands.
+
+open_link.html:including open a link in browser.
