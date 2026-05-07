@@ -17,43 +17,61 @@
 **/
 
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart' as launcher;
 
 void main() {
   runApp(const MyApp());
 }
 
-class SectionLink extends StatelessWidget {
-  const SectionLink({super.key});
+class SectionList extends StatefulWidget {
+  const SectionList({super.key});
 
-  Future<void> _openLink() async {
-    final url = Uri.parse(_versionUrl);
-    if (await launcher.canLaunchUrl(url)) {
-      await launcher.launchUrl(url);
-    }
+  @override
+  State<SectionList> createState() => _SectionListState();
+}
+
+class _SectionListState extends State<SectionList> {
+  late ScrollController _sCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _sCtrl = ScrollController();
+    _sCtrl.addListener(scroll);
+  }
+
+  @override
+  void dispose() {
+    _sCtrl.removeListener(scroll);
+    _sCtrl.dispose();
+    super.dispose();
+  }
+
+  void scroll() {
+    print("scrolling.");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [TextButton(onPressed: _openLink, child: Text("Open"))],
+      appBar: AppBar(title: Text("Scrollbar demo")),
+      body: Scrollbar(
+        child: ListView.builder(
+          itemCount: 99,
+          itemBuilder: (context, index) {
+            return Text("item $index");
+          },
+          controller: _sCtrl,
         ),
       ),
-      body: Text("data"),
     );
   }
 }
-
-final String _versionUrl = "https://website.com/";
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'HLife open link demo', home: SectionLink());
+    return MaterialApp(title: 'HLife scrollbar demo', home: SectionList());
   }
 }

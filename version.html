@@ -9,19 +9,70 @@
         .code {
             background-color: gainsboro;
             white-space: pre-line;
-        }        
+        }
     </style>
+    <script>
+        function checkVersion() {
+            const major = 27;
+            const minor = 6;
+            document.getElementById('spanCur').innerHTML = `${major}.${minor}`;
+
+            const curVersion = "cur";
+            const arr = queryString(window.location.href);
+            if (undefined !== arr[curVersion] && null !== arr[curVersion] && "" != arr[curVersion]) {
+                const [strMajor, strMinor] = arr[curVersion].split('.');
+                const srcMajor = parseInt(strMajor);
+                const srcMinor = parseInt(strMinor);
+                if (srcMajor == major && srcMinor >= minor) {
+                    showTips();
+                } else if (srcMajor > major) {
+                    showTips();
+                }
+            }
+        }
+
+        function showTips() {
+            document.getElementById('divTips').style.display = 'block';
+            document.getElementById('divCur').style.display = 'none';
+        }
+
+        function queryString(url) {
+            const str1 = url.split('?')[1];
+            const params = {};
+
+            if (str1) {
+                const pairs = str1.split('&');
+                for (const pair of pairs) {
+                    const [key, value] = pair.split('=');
+                    if (undefined !== value && null !== value && "" != value) {
+                        params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
+                    }
+                }
+            }
+
+            return params;
+        }
+
+    </script>
 </head>
-<body>
-    <p>
-        健康生活的最新版本为: <b>27.6</b>
-    </p>
-    <p>
-        点击下面的链接, 开始下载最新版本:
-    </p>
-    <p>
-        <a href="" target="_blank"></a>
-    </p>
+
+<body onload="checkVersion();">
+    <div id="divTips" style="display: none;">
+        <p>
+            健康生活的新版本正在准备中, 预计会在稍候发布, 感谢您的关注.
+        </p>
+    </div>
+    <div id="divCur">
+        <p>
+            健康生活的最新版本为: <b><span id="spanCur"></span></b>
+        </p>
+        <p>
+            请点击下面的链接, 开始下载最新版本:
+        </p>
+        <p>
+            <a href="" target="_blank"></a>
+        </p>
+    </div>
     <br>
     <br>
 </body>

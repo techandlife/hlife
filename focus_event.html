@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>Focus event</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async Scrollbar FocusNode">
+    <meta name="keywords" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async Scrollbar FocusNode">
+    <style>
+        .code {
+            background-color: gainsboro;
+            white-space: pre-line;
+        }        
+    </style>
+</head>
+
+<body>
+    <p>
+        Sometimes we need to detect the focus event, set focus or cancel focus.
+    </p>    
+    <br>
+    <p>The Dart code:
+    </p>
+    <div class="code">
+
+  @override
+  void initState() {
+    super.initState();
+    _fNode = FocusNode();
+    _fNode.addListener(focus);
+  }
+
+  void focus() {
+    if (_fNode.hasFocus) {
+      print("get focus;");
+    } else {
+      print("cancel focus;");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Focus demo")),
+      body: Column(
+        children: [
+          TextField(
+            focusNode: _fNode,
+            decoration: InputDecoration(
+              border: UnderlineInputBorder(),
+              hint: Text("Text input"),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              _fNode.unfocus();
+            },
+            child: Text("Cancel focus"),
+          ),
+          TextButton(
+            onPressed: () {
+              _fNode.requestFocus();
+            },
+            child: Text("Set focus"),
+          ),
+        ],
+      ),
+    );
+  }
+
+    </div>
+    <br>
+    <br>
+    <p>
+        The source code can be found here:
+    </p>
+    <p>
+        <a href="focus_event_main.dart" target="_blank">download focus_event_main.dart</a>
+    </p>    
+    <br>
+</body>
+
+</html>

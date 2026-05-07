@@ -26,3 +26,7 @@ text_input.html: including demo of TextField widget.
 make_clean.html:including clean and build commands.
 
 open_link.html:including open a link in browser.
+
+scroll_event.html:including scrollbar event detecting.
+        
+focus_event.html:including focus event detecting.

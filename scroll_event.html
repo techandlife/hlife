@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Text input in Dart</title>
+    <title>Scroll event</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async Scrollbar FocusNode">
     <meta name="keywords" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async Scrollbar FocusNode">
@@ -12,45 +12,49 @@
         }        
     </style>
 </head>
+
 <body>
     <p>
-      1.Using TextField widget.
-    </p>
+        Sometimes we need to detect the scrollbar event.
+    </p>    
+    <br>
     <p>The Dart code:
     </p>
     <div class="code">
- final TextEditingController controller;
+  @override
+  void initState() {
+    super.initState();
+    _sCtrl = ScrollController();
+    _sCtrl.addListener(scroll);
+  }
+
+  void scroll() {
+    print("scrolling.");
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: TextField(
-          maxLines: 1000000,
-          minLines: 100,
-          controller: controller,
-          decoration: InputDecoration(border: UnderlineInputBorder()),
+    return Scaffold(
+      appBar: AppBar(title: Text("Scrollbar demo")),
+      body: Scrollbar(
+        child: ListView.builder(
+          itemCount: 99,
+          itemBuilder: (context, index) {
+            return Text("item $index");
+          },
+          controller: _sCtrl,
         ),
       ),
     );
   }
-  
     </div>
+    <br>
+    <br>
     <p>
-      2.Using TextEditingController to do init.
-    </p>
-    <p>The Dart code:
-    </p>
-    <div class="code">
-  myController = TextEditingController(text: "Init value.");      
-
-    </div>
-    <p>
-      The source code can be found here:
+        The source code can be found here:
     </p>
     <p>
-        <a href="text_input_main.dart" target="_blank">download text_input_main.dart</a>
+        <a href="scroll_event_main.dart" target="_blank">download scroll_event_main.dart</a>
     </p>    
     <br>
 </body>
