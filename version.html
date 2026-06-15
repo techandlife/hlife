@@ -1,80 +1,163 @@
 <html>
 
 <head>
-    <title>健康生活的最新版本</title>
+    <title>hlife App 健康生活</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Dart Android hlife project health life">
-    <meta name="keywords" content="Dart Android hlife project health life">
+    <meta name="description" content="hlife App 健康生活">
+    <meta name="keywords" content="健康指南 生活指南 养生指南 中医指南">
+</head>
+
+<body>
+    <div style="text-align:center">
+        <h2>hlife App 使用介绍</h2>
+        <p>请点击图片查看大图:</p>
+    </div>
+    <div class="row">
+        <div class="column">
+            <img src="pictures/home2.png" alt="这是App的主界面" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/search.png" alt="这是搜索界面" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/search2.png" alt="示例搜索" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/search3.png" alt="示例在结果中搜索" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/sL.png" alt="示例搜索目录" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/bookmark1.png" alt="示例收藏1" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/bookmark2.png" alt="示例收藏2" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/bookmark3.png" alt="示例取消收藏1" style="width:100%" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="pictures/bookmark4.png" alt="示例取消收藏2" style="width:100%" onclick="myFunction(this);">
+        </div>
+    </div>
+    <div class="container">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <img id="expandedImg" style="width:100%">
+        <div id="imgtext"></div>
+    </div>
+    <div style="text-align:center" class="code">
+        <a id="linkDownload" href="#"></a>
+        <h2>下载</h2>
+        <div>
+            <p>
+                hlife App 的最新版本为: <b>27.6.0</b>
+                请点击下面的链接, 开始下载 apk 文件:
+            </p>
+            <p>
+                <a href="https://loadly.io/KTcoLE13" target="_blank">下载链接</a>
+            </p>
+        </div>
+    </div>
+    <div style="text-align:center">
+        <a id="linkPay" href="#"></a>
+        <h2>支付</h2>
+        <p>请扫码下面的图片，支付5元。</p>
+    </div>
+    <div>
+        <img src="pictures/pay.png" alt="支付图片" class="centerImg">
+    </div>
+    <div style="text-align:center" class="code">
+        <h2>联系我们</h2>
+        <div>
+            <p>
+                请发送邮件到: <br>techandlife@outlook.com
+                <br>
+                <br>
+            </p>
+        </div>
+    </div>
+    <script>
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            expandImg.parentElement.style.display = "block";
+        }
+    </script>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        /* The grid: Four equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 11%;
+            padding: 10px;
+        }
+
+        /* Style the images inside the grid */
+        .column img {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .column img:hover {
+            opacity: 1;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* The expanding image container */
+        .container {
+            position: relative;
+            display: none;
+        }
+
+        /* Expanding image text */
+        #imgtext {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Closable button inside the expanded image */
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        .centerImg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
         .code {
             background-color: gainsboro;
             white-space: pre-line;
         }
     </style>
-    <script>
-        function checkVersion() {
-            const major = 27;
-            const minor = 6;
-            document.getElementById('spanCur').innerHTML = `${major}.${minor}`;
-
-            const curVersion = "cur";
-            const arr = queryString(window.location.href);
-            if (undefined !== arr[curVersion] && null !== arr[curVersion] && "" != arr[curVersion]) {
-                const [strMajor, strMinor] = arr[curVersion].split('.');
-                const srcMajor = parseInt(strMajor);
-                const srcMinor = parseInt(strMinor);
-                if (srcMajor == major && srcMinor >= minor) {
-                    showTips();
-                } else if (srcMajor > major) {
-                    showTips();
-                }
-            }
-        }
-
-        function showTips() {
-            document.getElementById('divTips').style.display = 'block';
-            document.getElementById('divCur').style.display = 'none';
-        }
-
-        function queryString(url) {
-            const str1 = url.split('?')[1];
-            const params = {};
-
-            if (str1) {
-                const pairs = str1.split('&');
-                for (const pair of pairs) {
-                    const [key, value] = pair.split('=');
-                    if (undefined !== value && null !== value && "" != value) {
-                        params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
-                    }
-                }
-            }
-
-            return params;
-        }
-
-    </script>
-</head>
-
-<body onload="checkVersion();">
-    <div id="divTips" style="display: none;">
-        <p>
-            健康生活的新版本正在准备中, 预计会在稍候发布, 感谢您的关注.
-        </p>
-    </div>
-    <div id="divCur">
-        <p>
-            健康生活的最新版本为: <b><span id="spanCur"></span></b>
-        </p>
-        <p>
-            请点击下面的链接, 开始下载最新版本:
-        </p>
-        <p>
-            <a href="" target="_blank"></a>
-        </p>
-    </div>
-    <br>
-    <br>
 </body>
 
 </html>

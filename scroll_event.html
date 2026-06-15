@@ -51,6 +51,26 @@
     <br>
     <br>
     <p>
+        There are two ways to move scrollbar, one is using initialScrollOffset in ScrollController(), aonther one is using jumpTo().
+    </p>    
+    <br>
+    <p>The Dart code:
+    </p>
+    <div class="code">
+  @override
+  void initState() {
+    super.initState();
+    _sCtrl = ScrollController(initialScrollOffset: 200);
+    _sCtrl.addListener(scroll);
+  }
+
+  void _jump() {
+    _sCtrl.jumpTo(600);
+  }
+    </div>
+    <br>
+    <br>
+    <p>
         The source code can be found here:
     </p>
     <p>

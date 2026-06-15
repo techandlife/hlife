@@ -35,7 +35,7 @@ class _SectionListState extends State<SectionList> {
   @override
   void initState() {
     super.initState();
-    _sCtrl = ScrollController();
+    _sCtrl = ScrollController(initialScrollOffset: 200);
     _sCtrl.addListener(scroll);
   }
 
@@ -46,6 +46,10 @@ class _SectionListState extends State<SectionList> {
     super.dispose();
   }
 
+  void _jump() {
+    _sCtrl.jumpTo(600);
+  }
+
   void scroll() {
     print("scrolling.");
   }
@@ -53,7 +57,15 @@ class _SectionListState extends State<SectionList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Scrollbar demo")),
+      appBar: AppBar(
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("Scrollbar demo"),
+            TextButton(onPressed: _jump, child: Text("Jump")),
+          ],
+        ),
+      ),
       body: Scrollbar(
         child: ListView.builder(
           itemCount: 99,
