@@ -27,6 +27,10 @@ make_clean.html:including clean and build commands.
 
 open_link.html:including open a link in browser.
 
-including scrollbar event detecting and moving.
+scroll_event.html:including scrollbar event detecting and moving.
         
 focus_event.html:including focus event detecting.
+
+photo_maker.html:including demo of generating photo.
+
+version.html:downloading the file of hlife.apk.

@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Photo maker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async Scrollbar FocusNode drawParagraph">
+    <meta name="keywords" content="Dart Android hlife project health life UI design permission GridView FutureBuilder async Scrollbar FocusNode drawParagraph">
+    <style>
+        .code {
+            background-color: gainsboro;
+            white-space: pre-line;
+        }        
+    </style>
+</head>
+
+<body>
+    <p>
+        We can generate photo by using Canvas object.
+    </p>    
+    <br>
+    <p>The Dart code:
+    </p>
+    <div class="code">
+  void paint(Canvas canvas, Size size) {
+    Size mySize = Size(400, 400);
+    final Paint paintRect = Paint()..color = Colors.lightBlue;
+    final Rect rect = Offset.zero & mySize;
+    canvas.drawRect(rect, paintRect);
+
+    final paragraphBuilder = ui.ParagraphBuilder(ParagraphStyle())
+      ..addText("this is a photo maker demo.");
+
+    final constraints = ui.ParagraphConstraints(width: mySize.width);
+    final paragraph = paragraphBuilder.build();
+    paragraph.layout(constraints);
+    canvas.drawParagraph(paragraph, Offset.zero);
+  }
+
+    </div>
+    <br>
+    <br>
+    <p>
+        The source code can be found here:
+    </p>
+    <p>
+        <a href="photo_maker_main.dart" target="_blank">download photo_maker_main.dart</a>
+    </p>    
+    <br>
+</body>
+
+</html>
